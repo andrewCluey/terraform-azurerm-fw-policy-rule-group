@@ -1,8 +1,8 @@
 
-variable "application_rule_collections" {
+variable "application_rule_collection" { 
     default     = {}
     description = <<EOD
-    application_rule_collections = [
+    application_rule_collection = [
         {
             name     = "default_app_rules"
             priority = 500
@@ -46,23 +46,25 @@ variable "application_rule_collections" {
             priority = 600
             action   = "Allow"
             rules = [
-                name                  = "ASE_app_rules_rule1"
-                source_addresses      = ["10.0.0.0/24"]
-                destination_fqdn_tags = ["App Service Environment (ASE)"]
-                protocols             = [
-                    {
-                    type = "https"
-                    port = 443
+                {
+                    name                  = "ASE_app_rules_rule1"
+                    source_addresses      = ["10.0.0.0/24"]
+                    destination_fqdn_tags = ["App Service Environment (ASE)"]
+                    protocols             = [
+                        {
+                            type = "https"
+                            port = 443
+                        }
+                    ]
                 }
             ]
         }
     ]
-}
 EOD
 }
 
 
-variable "network_rule_collections" {
+variable "network_rule_collection" {
     default     = {}
     description = <<EOD
     network_rule_collections = [
